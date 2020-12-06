@@ -96,7 +96,3 @@ final class AsRxBridgeTests: XCTestCase {
         XCTAssertEqual(output.events, expectedEvents)
     }
 }
-
-private enum TestError: Error {
-    case generic
-}
