@@ -2,6 +2,7 @@
 
 ![Run Tests](https://github.com/Jackstone92/CombineRxBridge/workflows/Run%20Tests/badge.svg)
 [![License](https://img.shields.io/badge/license-mit-brightgreen.svg)](https://en.wikipedia.org/wiki/MIT_License)
+[![codecov](https://codecov.io/gh/Jackstone92/CombineRxBridge/branch/main/graph/badge.svg?token=8XH4E4NLBD)](https://codecov.io/gh/Jackstone92/CombineRxBridge)
 
 The *CombineRxBridge* library contains a series of functions that help with the interoperability between [RxSwift](https://github.com/ReactiveX/RxSwift) and Apple's [Combine](https://developer.apple.com/documentation/combine) frameworks.  
 
