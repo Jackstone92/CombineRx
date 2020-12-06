@@ -1,5 +1,7 @@
 # CombineRxBridge
 
+![Run Tests](https://github.com/Jackstone92/CombineRxBridge/workflows/Run%20Tests/badge.svg)
+
 The *CombineRxBridge* library contains a series of functions that help with the interoperability between [RxSwift](https://github.com/ReactiveX/RxSwift) and Apple's [Combine](https://developer.apple.com/documentation/combine) frameworks.  
 
 ## Combine to RxSwift
