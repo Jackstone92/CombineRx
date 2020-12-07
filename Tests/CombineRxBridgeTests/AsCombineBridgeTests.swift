@@ -181,4 +181,33 @@ final class AsCombineBridgeTests: XCTestCase {
 
         XCTAssertEqual(output, expected)
     }
+
+    func testAssertBridgeBufferDoesNotOverflowPropogatesErrors() {
+
+        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        let subject = PublishSubject<Int>()
+
+        subject
+            .asCombineBridge(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .assertBridgeBufferDoesNotOverflow()
+            .receive(on: scheduler)
+            .sink(
+                receiveCompletion: { completion in
+                    guard case .failure = completion else {
+                        XCTFail("Did not complete with `.failure`")
+                        return
+                    }
+
+                    expectation.fulfill()
+                },
+                receiveValue: { _ in }
+            )
+            .store(in: &cancellables)
+
+        subject.onError(TestError.generic)
+
+        scheduler.advance()
+
+        wait(for: [expectation], timeout: 0.1)
+    }
 }
