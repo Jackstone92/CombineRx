@@ -1,6 +1,6 @@
 //
 //  TestError.swift
-//  Copyright © 2020 Notonthehighstreet Enterprises Limited. All rights reserved.
+//  Copyright © 2020 Jack Stone. All rights reserved.
 //
 
 import Foundation

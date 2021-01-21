@@ -1,5 +1,5 @@
 //
-//  Publisher+AsRxBridge.swift
+//  Publisher+AsObservableTests.swift
 //  Copyright © 2020 Jack Stone. All rights reserved.
 //
 
@@ -9,7 +9,7 @@ import Combine
 import RxSwift
 @testable import CombineRx
 
-final class AsRxBridgeTests: XCTestCase {
+final class Publisher_AsObservableTests: XCTestCase {
 
     private var scheduler: TestScheduler!
 
@@ -26,7 +26,7 @@ final class AsRxBridgeTests: XCTestCase {
 
         scheduler.scheduleAt(100) {
             subject
-                .asRxBridge()
+                .asObservable()
                 .subscribe(output)
                 .disposed(by: disposeBag)
         }
@@ -54,7 +54,7 @@ final class AsRxBridgeTests: XCTestCase {
 
         scheduler.scheduleAt(100) {
             subject
-                .asRxBridge()
+                .asObservable()
                 .subscribe(output)
                 .disposed(by: disposeBag)
         }
@@ -78,7 +78,7 @@ final class AsRxBridgeTests: XCTestCase {
 
         scheduler.scheduleAt(100) {
             subject
-                .asRxBridge()
+                .asObservable()
                 .subscribe(output)
                 .disposed(by: disposeBag)
         }

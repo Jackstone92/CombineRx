@@ -1,5 +1,5 @@
 //
-//  ObservableType+AsCombineBridge.swift
+//  ObservableType+AsPublisher.swift
 //  Copyright © 2020 Jack Stone. All rights reserved.
 //
 
@@ -21,8 +21,8 @@ extension ObservableType {
     /// - Parameter whenFull: The buffering strategy to use. This determines how to handle the case when maximum buffer capacity is reached.
     ///
     /// - Returns: A Combine `Publisher` that is the bridged transformation of the given `ObservableType`.
-    public func asCombineBridge(withBufferSize size: Int,
-                                andBridgeBufferingStrategy whenFull: BridgeBufferingStrategy) -> Publishers.Buffer<BridgePublisher<Self>> {
+    public func asPublisher(withBufferSize size: Int,
+                            andBridgeBufferingStrategy whenFull: BridgeBufferingStrategy) -> Publishers.Buffer<BridgePublisher<Self>> {
         return BridgePublisher(upstream: self)
             .buffer(size: size, prefetch: .byRequest, whenFull: whenFull.strategy)
     }

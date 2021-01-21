@@ -11,7 +11,7 @@ extension Publisher {
     /// A bridging function that transforms a Combine `Publisher` into an RxSwift `Observable`.
     ///
     /// - Returns: An RxSwift `Observable` that is the bridged transformation of the given `Publisher`.
-    public func asRxBridge() -> Observable<Output> {
+    public func asObservable() -> Observable<Output> {
         return .create { observer -> Disposable in
             let cancellable = sink { completion in
                 switch completion {

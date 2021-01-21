@@ -1,6 +1,6 @@
 //
-//  AsCombineTests.swift
-//  Copyright © 2020 Notonthehighstreet Enterprises Limited. All rights reserved.
+//  ObservableType+AsPublisherTests.swift
+//  Copyright © 2020 Jack Stone. All rights reserved.
 //
 
 import XCTest
@@ -9,7 +9,7 @@ import RxSwift
 import CombineSchedulers
 @testable import CombineRx
 
-final class AsCombineTests: XCTestCase {
+final class ObservableType_AsPublisherTests: XCTestCase {
 
     private var cancellables = Set<AnyCancellable>()
     private var scheduler: TestScheduler<DispatchQueue.SchedulerTimeType, DispatchQueue.SchedulerOptions>!
@@ -26,7 +26,7 @@ final class AsCombineTests: XCTestCase {
         var output = [Int]()
 
         subject
-            .asCombineBridge(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { value in output.append(value) })
@@ -47,7 +47,7 @@ final class AsCombineTests: XCTestCase {
         let subject = PublishSubject<Int>()
 
         subject
-            .asCombineBridge(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
             .sink(receiveCompletion: { completion in
                 guard case .finished = completion else {
@@ -74,7 +74,7 @@ final class AsCombineTests: XCTestCase {
         let testError = BridgeFailure.upstreamError(TestError.generic)
 
         subject
-            .asCombineBridge(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
             .sink(
                 receiveCompletion: { completion in
@@ -103,7 +103,7 @@ final class AsCombineTests: XCTestCase {
         var output = [Int]()
 
         subject
-            .asCombineBridge(withBufferSize: bufferSize, andBridgeBufferingStrategy: .error)
+            .asPublisher(withBufferSize: bufferSize, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { value in output.append(value) })
@@ -124,7 +124,7 @@ final class AsCombineTests: XCTestCase {
         let bufferSize = 100
 
         Observable.from(Array(0..<bufferSize + 1))
-            .asCombineBridge(withBufferSize: bufferSize, andBridgeBufferingStrategy: .error)
+            .asPublisher(withBufferSize: bufferSize, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
             .sink(
                 receiveCompletion: { completion in
@@ -150,7 +150,7 @@ final class AsCombineTests: XCTestCase {
         var output = [Int]()
 
         Observable.from(Array(0..<bufferSize + 1))
-            .asCombineBridge(withBufferSize: bufferSize, andBridgeBufferingStrategy: .dropNewest)
+            .asPublisher(withBufferSize: bufferSize, andBridgeBufferingStrategy: .dropNewest)
             .receive(on: scheduler)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { value in output.append(value) })
@@ -169,7 +169,7 @@ final class AsCombineTests: XCTestCase {
         var output = [Int]()
 
         Observable.from(Array(0..<bufferSize + 1))
-            .asCombineBridge(withBufferSize: bufferSize, andBridgeBufferingStrategy: .dropOldest)
+            .asPublisher(withBufferSize: bufferSize, andBridgeBufferingStrategy: .dropOldest)
             .receive(on: scheduler)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { value in output.append(value) })
@@ -188,7 +188,7 @@ final class AsCombineTests: XCTestCase {
         let subject = PublishSubject<Int>()
 
         subject
-            .asCombineBridge(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .assertBridgeBufferDoesNotOverflow()
             .receive(on: scheduler)
             .sink(
