@@ -1,5 +1,5 @@
 //
-//  AsCombineBridgeTests.swift
+//  AsCombineTests.swift
 //  Copyright © 2020 Notonthehighstreet Enterprises Limited. All rights reserved.
 //
 
@@ -7,9 +7,9 @@ import XCTest
 import Combine
 import RxSwift
 import CombineSchedulers
-@testable import CombineRxBridge
+@testable import CombineRx
 
-final class AsCombineBridgeTests: XCTestCase {
+final class AsCombineTests: XCTestCase {
 
     private var cancellables = Set<AnyCancellable>()
     private var scheduler: TestScheduler<DispatchQueue.SchedulerTimeType, DispatchQueue.SchedulerOptions>!

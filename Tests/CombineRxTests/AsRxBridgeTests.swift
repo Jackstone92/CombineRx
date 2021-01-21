@@ -7,7 +7,7 @@ import XCTest
 import RxTest
 import Combine
 import RxSwift
-@testable import CombineRxBridge
+@testable import CombineRx
 
 final class AsRxBridgeTests: XCTestCase {
 

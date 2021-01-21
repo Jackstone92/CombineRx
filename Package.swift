@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "CombineRxBridge",
+    name: "CombineRx",
     platforms: [
         .macOS(.v10_15), .iOS(.v13)
     ],
     products: [
         .library(
-            name: "CombineRxBridge",
-            targets: ["CombineRxBridge"]),
+            name: "CombineRx",
+            targets: ["CombineRx"]),
     ],
     dependencies: [
         .package(url: "http://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.0.0")),
@@ -19,11 +19,11 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "CombineRxBridge",
+            name: "CombineRx",
             dependencies: ["RxSwift"]),
         .testTarget(
-            name: "CombineRxBridgeTests",
-            dependencies: ["CombineRxBridge",
+            name: "CombineRxTests",
+            dependencies: ["CombineRx",
                            .product(name: "RxTest", package: "RxSwift"),
                            .product(name: "CombineSchedulers", package: "combine-schedulers")])
     ]
