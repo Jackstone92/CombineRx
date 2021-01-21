@@ -16,11 +16,11 @@ jobs:
     - name: Generate project
       run: swift package generate-xcodeproj --enable-code-coverage
     - name: Run tests
-      run: set -o pipefail && xcodebuild -project CombineRxBridge.xcodeproj -scheme CombineRxBridge-Package -enableCodeCoverage YES -sdk macosx -destination "arch=x86_64" test | xcpretty -c -r html --output logs/macOS.html
+      run: set -o pipefail && xcodebuild -project CombineRx.xcodeproj -scheme CombineRx-Package -enableCodeCoverage YES -sdk macosx -destination "arch=x86_64" test | xcpretty -c -r html --output logs/macOS.html
     - uses: codecov/codecov-action@v1.0.5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        name: CombineRxBridge
+        name: CombineRx
     - uses: actions/upload-artifact@v1
       with:
         name: build-logs-${{ github.run_id }}
