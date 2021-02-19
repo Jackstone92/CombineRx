@@ -22,7 +22,7 @@ extension Publisher {
     /// - Returns: An observable sequence whose elements are the result of invoking the transform function on each element of source producing an
     ///            observable of observable sequences and that at any point in time produces the elements of the most recent inner observable sequence that has been received.
     ///
-    func flatMapLatest<T: Publisher>(_ transform: @escaping (Self.Output) -> T) -> Publishers.SwitchToLatest<T, Publishers.Map<Self, T>> where T.Failure == Self.Failure {
+    public func flatMapLatest<T: Publisher>(_ transform: @escaping (Self.Output) -> T) -> Publishers.SwitchToLatest<T, Publishers.Map<Self, T>> where T.Failure == Self.Failure {
         map(transform).switchToLatest()
     }
 }

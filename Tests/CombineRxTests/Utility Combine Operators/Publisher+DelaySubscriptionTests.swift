@@ -41,7 +41,7 @@ final class Publisher_DelaySubscriptionTests: XCTestCase {
         totalTimePassed += 49_999_999
         XCTAssertTrue(output.isEmpty)
 
-        scheduler.advance(by: 1)
+        scheduler.advance(by: .seconds(1))
         totalTimePassed += 1
 
         XCTAssertEqual(totalTimePassed, 100_000_000)
