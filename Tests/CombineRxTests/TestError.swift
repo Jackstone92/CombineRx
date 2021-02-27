@@ -7,4 +7,5 @@ import Foundation
 
 enum TestError: Error {
     case generic
+    case other
 }

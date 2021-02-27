@@ -276,7 +276,7 @@ final class ObservableType_AsPublisherTests: XCTestCase {
 
         subject
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .assertBridgeBufferDoesNotOverflowIfPossible()
+            .assertBridgeBufferDoesNotOverflowIfPossible { XCTFail(); return TestError.other  }
             .receive(on: scheduler)
             .sink(
                 receiveCompletion: { completion in
@@ -287,7 +287,7 @@ final class ObservableType_AsPublisherTests: XCTestCase {
 
                     expectation.fulfill()
                 },
-                receiveValue: { _ in }
+                receiveValue: { _ in XCTFail() }
             )
             .store(in: &cancellables)
 
@@ -296,5 +296,69 @@ final class ObservableType_AsPublisherTests: XCTestCase {
         scheduler.advance()
 
         wait(for: [expectation], timeout: 0.1)
+    }
+
+    func testAssertBridgeBufferDoesNotOverflowIfPossiblePropogatesUpstreamBridgeFailureErrors() {
+
+        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        let subject = PublishSubject<Int>()
+
+        subject
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .assertBridgeBufferDoesNotOverflowIfPossible { XCTFail(); return TestError.other }
+            .receive(on: scheduler)
+            .sink(
+                receiveCompletion: { completion in
+                    guard case .failure = completion else {
+                        XCTFail("Did not complete with `.failure`")
+                        return
+                    }
+
+                    expectation.fulfill()
+                },
+                receiveValue: { _ in XCTFail() }
+            )
+            .store(in: &cancellables)
+
+        subject.onError(BridgeFailure.upstreamError(TestError.generic))
+
+        scheduler.advance()
+
+        wait(for: [expectation], timeout: 0.1)
+    }
+
+    func testAssertBridgeBufferDoesNotOverflowIfPossibleIsTriggeredOnBridgeBufferOverflow() {
+
+        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        let bridgeBufferOverflowExpectation = XCTestExpectation(description: "Should trigger bridge buffer overflow")
+
+        let subject = PublishSubject<Int>()
+
+        subject
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .assertBridgeBufferDoesNotOverflowIfPossible { bridgeBufferOverflowExpectation.fulfill(); return BridgeFailure.bufferOverflow }
+            .receive(on: scheduler)
+            .sink(
+                receiveCompletion: { completion in
+                    guard case .failure(let error) = completion else {
+                        XCTFail("Did not complete with `.failure`")
+                        return
+                    }
+
+                    guard case BridgeFailure.bufferOverflow = error else {
+                        XCTFail()
+                        return
+                    }
+
+                    expectation.fulfill()
+                },
+                receiveValue: { _ in XCTFail() })
+            .store(in: &cancellables)
+
+        subject.onError(BridgeFailure.bufferOverflow)
+
+        scheduler.advance()
+
+        wait(for: [expectation, bridgeBufferOverflowExpectation], timeout: 0.1)
     }
 }
