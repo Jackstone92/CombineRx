@@ -17,7 +17,7 @@ public struct BridgePublisher<U: ObservableType>: Publisher {
         self.upstream = upstream
     }
 
-    public func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
+    public func receive<S>(subscriber: S) where S: Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         subscriber.receive(subscription: BridgeSubscription(upstream: upstream, downstream: subscriber))
     }
 }
