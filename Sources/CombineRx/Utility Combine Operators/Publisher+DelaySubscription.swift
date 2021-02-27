@@ -31,6 +31,7 @@ extension Publisher {
     }
 }
 
+// MARK: - Publisher
 // The various operators defined as extensions on `Publisher` implement their functionality as classes or structs
 // that extend this `Publishers` enumeration. For example, the `contains(_:)` operator returns a `Publishers.Contains` instance.
 // Following this pattern, the `delaySubscription(for:tolerance:scheduler:options:)` operator should return a
@@ -78,6 +79,7 @@ extension Publishers {
     }
 }
 
+// MARK: - Subscription
 private extension Publishers.DelaySubscription {
 
     /// The actual delayed subsription where the scheduler advancing takes place.
