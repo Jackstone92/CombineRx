@@ -189,7 +189,7 @@ final class ObservableType_AsPublisherTests: XCTestCase {
 
         subject
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .assertBridgeBufferDoesNotOverflow()
+            .assertBridgeBufferDoesNotOverflowIfPossible()
             .receive(on: scheduler)
             .sink(
                 receiveCompletion: { completion in
