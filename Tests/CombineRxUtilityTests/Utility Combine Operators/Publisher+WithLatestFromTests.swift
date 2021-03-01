@@ -5,7 +5,8 @@
 
 import XCTest
 import Combine
-@testable import CombineRx
+@testable import TestCommon
+@testable import CombineRxUtility
 
 final class Publisher_WithLatestFromTests: XCTestCase {
 

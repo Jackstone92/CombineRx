@@ -7,7 +7,8 @@ import XCTest
 import Combine
 import RxSwift
 import CombineSchedulers
-@testable import CombineRx
+@testable import TestCommon
+@testable import CombineRxInteroperability
 
 final class ObservableType_AsPublisherTests: XCTestCase {
 

@@ -7,7 +7,8 @@ import XCTest
 import RxTest
 import Combine
 import RxSwift
-@testable import CombineRx
+@testable import TestCommon
+@testable import CombineRxInteroperability
 
 final class Publisher_AsObservableTests: XCTestCase {
 
