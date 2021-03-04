@@ -49,7 +49,7 @@ The added utility operators are as follows:
 - `withLatestFrom`: Merges two observable sequences into one observable sequence by combining each element from self with the latest element from the second source, if any.
 
 The added convenience operators are as follows:
-- `convertToResult`: Converts a publisher's output and failure type to a result that can be switched on. The resulting publisher's error type becomes `Never` as any error will be caught and propagated to the `Result`.
+- `asResult`: Converts a publisher's output and failure type to a result that can be switched on. The resulting publisher's error type becomes `Never` as any error will be caught and propagated to the `Result`.
 - `just(_:)`: A convenience method on `AnyPublisher` to create a `Just` without having to include the boilerplate code to set failure type and erase to `AnyPublisher`.
 - `fail(with:)`: A convenience method on `AnyPublisher` to create a `Fail` without having to include the boilerplate code to set failure type and erase to `AnyPublisher`.
 

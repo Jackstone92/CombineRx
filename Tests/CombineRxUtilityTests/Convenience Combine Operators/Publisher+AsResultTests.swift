@@ -1,5 +1,5 @@
 //
-//  Publisher+ConvertToResultTests.swift
+//  Publisher+AsResultTests.swift
 //  Copyright © 2021 Jack Stone. All rights reserved.
 //
 
@@ -8,7 +8,7 @@ import Combine
 @testable import TestCommon
 @testable import CombineRxUtility
 
-final class Publisher_ConvertToResultTests: XCTestCase {
+final class Publisher_AsResultTests: XCTestCase {
 
     private var subscriptions: Set<AnyCancellable>!
 
@@ -27,7 +27,7 @@ final class Publisher_ConvertToResultTests: XCTestCase {
         var output = [Result<Int, TestError>]()
 
         subject
-            .convertToResult()
+            .asResult()
             .sink(receiveValue: { output.append($0); expectation.fulfill() })
             .store(in: &subscriptions)
 
@@ -54,7 +54,7 @@ final class Publisher_ConvertToResultTests: XCTestCase {
         var output = [Result<Int, TestError>]()
 
         subject
-            .convertToResult()
+            .asResult()
             .sink(receiveValue: { output.append($0); expectation.fulfill() })
             .store(in: &subscriptions)
 
