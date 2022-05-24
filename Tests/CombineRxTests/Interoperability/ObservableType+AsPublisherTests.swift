@@ -12,12 +12,12 @@ import CombineSchedulers
 final class ObservableType_AsPublisherTests: XCTestCase {
 
     private var cancellables = Set<AnyCancellable>()
-    private var scheduler: TestScheduler<DispatchQueue.SchedulerTimeType, DispatchQueue.SchedulerOptions>!
+    private var scheduler: TestSchedulerOf<DispatchQueue>!
 
     override func setUp() {
         super.setUp()
         cancellables = Set<AnyCancellable>()
-        scheduler = DispatchQueue.testScheduler
+        scheduler = DispatchQueue.test
     }
 
     func testPublishSubjectOnNextEventsAreBridged() {
