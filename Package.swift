@@ -11,7 +11,8 @@ let package = Package(
     products: [
         .library(
             name: "CombineRx",
-            targets: ["CombineRx"]),
+            targets: ["CombineRx"]
+        ),
     ],
     dependencies: [
         .package(url: "http://github.com/ReactiveX/RxSwift.git", .rangeItem(Version("5.0.0")..<Version("7.0.0"))),
@@ -20,11 +21,15 @@ let package = Package(
     targets: [
         .target(
             name: "CombineRx",
-            dependencies: ["RxSwift"]),
+            dependencies: ["RxSwift"]
+        ),
         .testTarget(
             name: "CombineRxTests",
-            dependencies: ["CombineRx",
-                           .product(name: "RxTest", package: "RxSwift"),
-                           .product(name: "CombineSchedulers", package: "combine-schedulers")])
+            dependencies: [
+                "CombineRx",
+                .product(name: "RxTest", package: "RxSwift"),
+                .product(name: "CombineSchedulers", package: "combine-schedulers")
+            ]
+        )
     ]
 )
