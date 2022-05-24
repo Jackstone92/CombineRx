@@ -15,8 +15,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "http://github.com/ReactiveX/RxSwift.git", .rangeItem(Version("5.0.0")..<Version("7.0.0"))),
-        .package(url: "https://github.com/pointfreeco/combine-schedulers", .upToNextMajor(from: "0.1.2"))
+        .package(url: "http://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
+        .package(url: "https://github.com/pointfreeco/combine-schedulers", .upToNextMajor(from: "0.5.3"))
     ],
     targets: [
         .target(
