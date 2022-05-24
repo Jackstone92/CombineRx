@@ -11,12 +11,12 @@ import CombineSchedulers
 
 final class ObservableType_AsPublisherTests: XCTestCase {
 
-    private var cancellables = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
     private var scheduler: TestSchedulerOf<DispatchQueue>!
 
     override func setUp() {
         super.setUp()
-        cancellables = Set<AnyCancellable>()
+        subscriptions = Set<AnyCancellable>()
         scheduler = DispatchQueue.test
     }
 
@@ -28,9 +28,11 @@ final class ObservableType_AsPublisherTests: XCTestCase {
         subject
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { value in output.append(value) })
-            .store(in: &cancellables)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { value in output.append(value) }
+            )
+            .store(in: &subscriptions)
 
         XCTAssertTrue(output.isEmpty)
 
@@ -41,35 +43,39 @@ final class ObservableType_AsPublisherTests: XCTestCase {
         XCTAssertEqual(output, [0])
     }
 
-    func testOnCompleteEventsArePropogatedDownstream() {
+    func testOnCompleteEventsArePropagatedDownstream() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.finished`")
+        var didCompleteWithFinished = false
         let subject = PublishSubject<Int>()
 
         subject
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
-            .sink(receiveCompletion: { completion in
-                guard case .finished = completion else {
-                    XCTFail("Did not complete with `.finished`")
-                    return
-                }
+            .sink(
+                receiveCompletion: { completion in
+                    guard case .finished = completion else {
+                        XCTFail("Did not complete with `.finished`")
+                        return
+                    }
 
-                expectation.fulfill()
-            },
-                  receiveValue: { _ in })
-            .store(in: &cancellables)
+                    didCompleteWithFinished = true
+                },
+                receiveValue: { _ in }
+            )
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFinished)
 
         subject.onCompleted()
 
         scheduler.advance()
 
-        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFinished)
     }
 
-    func testOnErrorEventsArePropogatedDownstream() {
+    func testOnErrorEventsArePropagatedDownstream() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        var didCompleteWithFailure = false
         let subject = PublishSubject<Int>()
         let testError = BridgeFailure.upstreamError(TestError.generic)
 
@@ -83,22 +89,24 @@ final class ObservableType_AsPublisherTests: XCTestCase {
                         return
                     }
 
-                    expectation.fulfill()
+                    didCompleteWithFailure = true
                 },
                 receiveValue: { _ in XCTFail("Should not receive any values") }
             )
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFailure)
 
         subject.onError(testError)
 
         scheduler.advance()
 
-        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFailure)
     }
 
     func testErrorTypeCanBeChainedDownstreamIfAlsoErrorType() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        var didCompleteWithFailure = false
         let subject = PublishSubject<Int>()
 
         subject
@@ -121,22 +129,24 @@ final class ObservableType_AsPublisherTests: XCTestCase {
                         return
                     }
 
-                    expectation.fulfill()
+                    didCompleteWithFailure = true
                 },
                 receiveValue: { _ in XCTFail("Should not receive any values") }
             )
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFailure)
 
         subject.onError(TestError.generic)
 
         scheduler.advance()
 
-        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFailure)
     }
 
     func testErrorTypeCanBeMappedFurtherDownstream() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        var didCompleteWithFailure = false
         let subject = PublishSubject<Int>()
 
         struct DatedError: Error {
@@ -170,17 +180,19 @@ final class ObservableType_AsPublisherTests: XCTestCase {
                         return
                     }
 
-                    expectation.fulfill()
+                    didCompleteWithFailure = true
                 },
                 receiveValue: { _ in XCTFail("Should not receive any values") }
             )
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFailure)
 
         subject.onError(TestError.generic)
 
         scheduler.advance()
 
-        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFailure)
     }
 
     func testCanFillBufferWithEvents() {
@@ -192,9 +204,11 @@ final class ObservableType_AsPublisherTests: XCTestCase {
         subject
             .asPublisher(withBufferSize: bufferSize, andBridgeBufferingStrategy: .error)
             .receive(on: scheduler)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { value in output.append(value) })
-            .store(in: &cancellables)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { value in output.append(value) }
+            )
+            .store(in: &subscriptions)
 
         XCTAssertTrue(output.isEmpty)
 
@@ -207,7 +221,7 @@ final class ObservableType_AsPublisherTests: XCTestCase {
 
     func testErrorBridgeBufferStrategy() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        var didCompleteWithFailure = false
         let bufferSize = 100
 
         Observable.from(Array(0..<bufferSize + 1))
@@ -220,15 +234,17 @@ final class ObservableType_AsPublisherTests: XCTestCase {
                         return
                     }
 
-                    expectation.fulfill()
+                    didCompleteWithFailure = true
                 },
                 receiveValue: { _ in }
             )
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFailure)
 
         scheduler.advance()
 
-        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFailure)
     }
 
     func testDropNewestBridgeBufferStrategy() {
@@ -239,9 +255,11 @@ final class ObservableType_AsPublisherTests: XCTestCase {
         Observable.from(Array(0..<bufferSize + 1))
             .asPublisher(withBufferSize: bufferSize, andBridgeBufferingStrategy: .dropNewest)
             .receive(on: scheduler)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { value in output.append(value) })
-            .store(in: &cancellables)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { value in output.append(value) }
+            )
+            .store(in: &subscriptions)
 
         let expected = Array(0..<bufferSize)
 
@@ -258,9 +276,11 @@ final class ObservableType_AsPublisherTests: XCTestCase {
         Observable.from(Array(0..<bufferSize + 1))
             .asPublisher(withBufferSize: bufferSize, andBridgeBufferingStrategy: .dropOldest)
             .receive(on: scheduler)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { value in output.append(value) })
-            .store(in: &cancellables)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { value in output.append(value) }
+            )
+            .store(in: &subscriptions)
 
         let expected = Array(1..<bufferSize + 1)
 
@@ -269,9 +289,9 @@ final class ObservableType_AsPublisherTests: XCTestCase {
         XCTAssertEqual(output, expected)
     }
 
-    func testAssertBridgeBufferDoesNotOverflowIfPossiblePropogatesErrors() {
+    func testAssertBridgeBufferDoesNotOverflowIfPossiblePropagatesErrors() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        var didCompleteWithFailure = false
         let subject = PublishSubject<Int>()
 
         subject
@@ -285,22 +305,24 @@ final class ObservableType_AsPublisherTests: XCTestCase {
                         return
                     }
 
-                    expectation.fulfill()
+                    didCompleteWithFailure = true
                 },
                 receiveValue: { _ in XCTFail() }
             )
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFailure)
 
         subject.onError(TestError.generic)
 
         scheduler.advance()
 
-        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFailure)
     }
 
-    func testAssertBridgeBufferDoesNotOverflowIfPossiblePropogatesUpstreamBridgeFailureErrors() {
+    func testAssertBridgeBufferDoesNotOverflowIfPossiblePropagatesUpstreamBridgeFailureErrors() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        var didCompleteWithFailure = false
         let subject = PublishSubject<Int>()
 
         subject
@@ -314,22 +336,24 @@ final class ObservableType_AsPublisherTests: XCTestCase {
                         return
                     }
 
-                    expectation.fulfill()
+                    didCompleteWithFailure = true
                 },
                 receiveValue: { _ in XCTFail() }
             )
-            .store(in: &cancellables)
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFailure)
 
         subject.onError(BridgeFailure.upstreamError(TestError.generic))
 
         scheduler.advance()
 
-        wait(for: [expectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFailure)
     }
 
     func testAssertBridgeBufferDoesNotOverflowIfPossibleIsTriggeredOnBridgeBufferOverflow() {
 
-        let expectation = XCTestExpectation(description: "Should complete with `.failure`")
+        var didCompleteWithFailure = false
         let bridgeBufferOverflowExpectation = XCTestExpectation(description: "Should trigger bridge buffer overflow")
 
         let subject = PublishSubject<Int>()
@@ -350,15 +374,18 @@ final class ObservableType_AsPublisherTests: XCTestCase {
                         return
                     }
 
-                    expectation.fulfill()
+                    didCompleteWithFailure = true
                 },
-                receiveValue: { _ in XCTFail() })
-            .store(in: &cancellables)
+                receiveValue: { _ in XCTFail() }
+            )
+            .store(in: &subscriptions)
+
+        XCTAssertFalse(didCompleteWithFailure)
 
         subject.onError(BridgeFailure.bufferOverflow)
 
         scheduler.advance()
 
-        wait(for: [expectation, bridgeBufferOverflowExpectation], timeout: 0.1)
+        XCTAssertTrue(didCompleteWithFailure)
     }
 }
