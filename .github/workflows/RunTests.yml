@@ -12,18 +12,14 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Generate project
-      run: swift package generate-xcodeproj --enable-code-coverage
-    - name: Run tests
-      run: set -o pipefail && xcodebuild -project CombineRx.xcodeproj -scheme CombineRx-Package -enableCodeCoverage YES -sdk macosx -destination "arch=x86_64" test | xcpretty -c -r html --output logs/macOS.html
-    - uses: codecov/codecov-action@v1.0.5
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        name: CombineRx
-    - uses: actions/upload-artifact@v1
-      with:
-        name: build-logs-${{ github.run_id }}
-        path: logs
-    - name: Update coverage
-      run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
+      - uses: actions/checkout@v3
+      - name: Build
+        run: swift build
+      - name: Run tests
+        run: swift test --enable-code-coverage
+      - name: Determine coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          name: CombineRx
+          xcode: true
