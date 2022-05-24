@@ -13,11 +13,11 @@
 		ECCD2CDF283CDB8400663179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2CDE283CDB8400663179 /* Assets.xcassets */; };
 		ECCD2CE2283CDB8400663179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2CE0283CDB8400663179 /* LaunchScreen.storyboard */; };
 		ECCD2D0F283CDF8800663179 /* MathsExpressionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D0E283CDF8800663179 /* MathsExpressionClient.swift */; };
-		ECCD2D12283CDFB100663179 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D11283CDFB100663179 /* RxCocoa */; };
-		ECCD2D14283CDFB100663179 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D13283CDFB100663179 /* RxSwift */; };
 		ECCD2D16283CDFDF00663179 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D15283CDFDF00663179 /* Expression.swift */; };
 		ECCD2D18283CE13000663179 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D17283CE13000663179 /* ViewModel.swift */; };
-		ECCD2D25283CF4AF00663179 /* CombineRx in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D24283CF4AF00663179 /* CombineRx */; };
+		ECCD2D34283D46D700663179 /* CombineRx in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D33283D46D700663179 /* CombineRx */; };
+		ECCD2D36283D46F100663179 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D35283D46F100663179 /* RxSwift */; };
+		ECCD2D38283D46F400663179 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D37283D46F400663179 /* RxCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,6 @@
 		ECCD2CDE283CDB8400663179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECCD2CE1283CDB8400663179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECCD2CE3283CDB8400663179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECCD2D0D283CDE6700663179 /* CombineRx */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CombineRx; path = ../..; sourceTree = "<group>"; };
 		ECCD2D0E283CDF8800663179 /* MathsExpressionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathsExpressionClient.swift; sourceTree = "<group>"; };
 		ECCD2D15283CDFDF00663179 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		ECCD2D17283CE13000663179 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -39,9 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECCD2D14283CDFB100663179 /* RxSwift in Frameworks */,
-				ECCD2D25283CF4AF00663179 /* CombineRx in Frameworks */,
-				ECCD2D12283CDFB100663179 /* RxCocoa in Frameworks */,
+				ECCD2D38283D46F400663179 /* RxCocoa in Frameworks */,
+				ECCD2D36283D46F100663179 /* RxSwift in Frameworks */,
+				ECCD2D34283D46D700663179 /* CombineRx in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +50,6 @@
 		ECCD2CC9283CDB8100663179 = {
 			isa = PBXGroup;
 			children = (
-				ECCD2D0C283CDE6700663179 /* Packages */,
 				ECCD2CD4283CDB8100663179 /* RxSwift 5 App */,
 				ECCD2CD3283CDB8100663179 /* Products */,
 				ECCD2D23283CF4AF00663179 /* Frameworks */,
@@ -82,14 +80,6 @@
 			path = "RxSwift 5 App";
 			sourceTree = "<group>";
 		};
-		ECCD2D0C283CDE6700663179 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				ECCD2D0D283CDE6700663179 /* CombineRx */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		ECCD2D23283CF4AF00663179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,9 +104,9 @@
 			);
 			name = "RxSwift 5 App";
 			packageProductDependencies = (
-				ECCD2D11283CDFB100663179 /* RxCocoa */,
-				ECCD2D13283CDFB100663179 /* RxSwift */,
-				ECCD2D24283CF4AF00663179 /* CombineRx */,
+				ECCD2D33283D46D700663179 /* CombineRx */,
+				ECCD2D35283D46F100663179 /* RxSwift */,
+				ECCD2D37283D46F400663179 /* RxCocoa */,
 			);
 			productName = "RxSwift 5 App";
 			productReference = ECCD2CD2283CDB8100663179 /* RxSwift 5 App.app */;
@@ -148,6 +138,7 @@
 			mainGroup = ECCD2CC9283CDB8100663179;
 			packageReferences = (
 				ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				ECCD2D30283D46B100663179 /* XCRemoteSwiftPackageReference "CombineRx" */,
 			);
 			productRefGroup = ECCD2CD3283CDB8100663179 /* Products */;
 			projectDirPath = "";
@@ -398,22 +389,31 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		ECCD2D30283D46B100663179 /* XCRemoteSwiftPackageReference "CombineRx" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Jackstone92/CombineRx.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		ECCD2D11283CDFB100663179 /* RxCocoa */ = {
+		ECCD2D33283D46D700663179 /* CombineRx */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
+			package = ECCD2D30283D46B100663179 /* XCRemoteSwiftPackageReference "CombineRx" */;
+			productName = CombineRx;
 		};
-		ECCD2D13283CDFB100663179 /* RxSwift */ = {
+		ECCD2D35283D46F100663179 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		ECCD2D24283CF4AF00663179 /* CombineRx */ = {
+		ECCD2D37283D46F400663179 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CombineRx;
+			package = ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
