@@ -26,6 +26,7 @@ class ViewController: UIViewController {
 
     private lazy var expressionAndAnswerLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
