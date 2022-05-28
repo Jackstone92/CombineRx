@@ -27,6 +27,12 @@ final class ViewModel {
             }
     }
 
+    var isErrorObservable: Observable<Bool> {
+        stateSubject
+            .skipWhile { $0 == .pending }
+            .map { $0 == .error }
+    }
+
     var isLoadingObservable: Observable<Bool> {
         stateSubject
             .skipWhile { $0 == .pending }
@@ -35,6 +41,7 @@ final class ViewModel {
 
     var title: String { "Maths Expressions" }
     var buttonLabel: String { "Random Expression" }
+    var errorMessage: String { "Something went wrong... Please try again" }
 
     let buttonTapSubject = PublishSubject<Void>()
 

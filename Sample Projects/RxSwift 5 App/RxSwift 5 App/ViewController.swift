@@ -33,6 +33,16 @@ class ViewController: UIViewController {
         return label
     }()
 
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.font = UIFont.preferredFont(forTextStyle: .callout)
+        label.textAlignment = .center
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +69,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
 
         setupExpressionAndAnswerLabel()
+        setupErrorLabel()
         setupButton()
         setupActivityIndicator()
     }
@@ -69,6 +80,15 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             expressionAndAnswerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             expressionAndAnswerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    private func setupErrorLabel() {
+        view.addSubview(errorLabel)
+
+        NSLayoutConstraint.activate([
+            errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
@@ -104,6 +124,12 @@ class ViewController: UIViewController {
             .sink { [unowned self] title in self.button.setTitle(title, for: .normal) }
             .store(in: &subscriptions)
 
+        Observable.just(viewModel.errorMessage)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .catchToEmpty()
+            .sink { [unowned self] errorMessage in self.errorLabel.text = errorMessage }
+            .store(in: &subscriptions)
+
         viewModel.expressionAndAnswerObservable
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .catchToEmpty()
@@ -122,9 +148,16 @@ class ViewController: UIViewController {
             .store(in: &subscriptions)
 
         viewModel.isLoadingObservable
+            .withLatestFrom(viewModel.isErrorObservable, resultSelector: { $0 || $1 })
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
             .catchToEmpty()
-            .sink { [unowned self] isLoading in self.expressionAndAnswerLabel.isHidden = isLoading }
+            .sink { [unowned self] isLoadingOrError in self.expressionAndAnswerLabel.isHidden = isLoadingOrError }
+            .store(in: &subscriptions)
+
+        viewModel.isErrorObservable
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
+            .catchToEmpty()
+            .sink { [unowned self] isError in self.errorLabel.isHidden = !isError }
             .store(in: &subscriptions)
     }
 
