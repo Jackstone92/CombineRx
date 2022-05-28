@@ -1,23 +1,25 @@
 {
-  "pins" : [
-    {
-      "identity" : "combinerx",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:Jackstone92/CombineRx.git",
-      "state" : {
-        "revision" : "a92daaa4bad7b0437897e4ecc79fb3149cf50cca",
-        "version" : "1.0.0"
+  "object": {
+    "pins": [
+      {
+        "package": "CombineRx",
+        "repositoryURL": "git@github.com:Jackstone92/CombineRx.git",
+        "state": {
+          "branch": null,
+          "revision": "a92daaa4bad7b0437897e4ecc79fb3149cf50cca",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "git@github.com:ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "cec68169a048a079f461ba203fe85636548d7a89",
+          "version": "5.1.3"
+        }
       }
-    },
-    {
-      "identity" : "rxswift",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:ReactiveX/RxSwift.git",
-      "state" : {
-        "revision" : "cec68169a048a079f461ba203fe85636548d7a89",
-        "version" : "5.1.3"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }
