@@ -1,8 +1,6 @@
 //
 //  ObservableTypeBridgePublisher.swift
-//  
-//
-//  Created by Jack Stone on 24/05/2022.
+//  Copyright © 2022 Jack Stone. All rights reserved.
 //
 
 import Combine

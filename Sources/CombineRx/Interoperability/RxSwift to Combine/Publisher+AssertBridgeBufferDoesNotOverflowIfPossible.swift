@@ -1,6 +1,6 @@
 //
 //  Publisher+AssertBridgeBufferDoesNotOverflowIfPossible.swift
-//  Copyright © 2021 Notonthehighstreet Enterprises Limited. All rights reserved.
+//  Copyright © 2021 Jack Stone. All rights reserved.
 //
 
 import Foundation

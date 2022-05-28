@@ -1,8 +1,6 @@
 //
 //  InfallibleType+AsPublisherTests.swift
-//  
-//
-//  Created by Jack Stone on 24/05/2022.
+//  Copyright © 2020 Jack Stone. All rights reserved.
 //
 
 import XCTest
