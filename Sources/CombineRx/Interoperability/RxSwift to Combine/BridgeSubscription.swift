@@ -24,7 +24,7 @@ final class BridgeSubscription<U: ObservableType, D: Subscriber>: Subscription w
         self.downstream = downstream
     }
 
-    // While RxSwift does not have intrinsic backpressure support, legal behaviour can be guaranteed because the subscriber
+    // While RxSwift does not have intrinsic back pressure support, legal behaviour can be guaranteed because the subscriber
     // is in fact a `Buffer` sink that is enforced by the API (with an internal operator initialiser).
     // All that must be done is to ensure that a subscription commences whenever a demand threshold of `1` is reached.
     func request(_ demand: Subscribers.Demand) {
@@ -35,9 +35,11 @@ final class BridgeSubscription<U: ObservableType, D: Subscriber>: Subscription w
         let disposeBag = DisposeBag()
 
         upstream
-            .subscribe(onNext: { [unowned self] value in _ = self.downstream.receive(value) },
-                       onError: { [unowned self] error in self.downstream.receive(completion: .failure(.upstreamError(error))) },
-                       onCompleted: { [unowned self] in self.downstream.receive(completion: .finished) })
+            .subscribe(
+                onNext: { [unowned self] value in _ = self.downstream.receive(value) },
+                onError: { [unowned self] error in self.downstream.receive(completion: .failure(.upstreamError(error))) },
+                onCompleted: { [unowned self] in self.downstream.receive(completion: .finished) }
+            )
             .disposed(by: disposeBag)
 
         status = .active(disposeBag: disposeBag)

@@ -15,7 +15,10 @@ extension Publisher {
     ///
     /// - Returns: A publisher that maps any upstream error or fatal errors in the event of a `bufferOverflow`.
     ///
-    public func assertBridgeBufferDoesNotOverflowIfPossible(onBufferOverflow: @escaping () -> Error = { preconditionFailure("Bridge buffer overflowed.") }) -> Publishers.MapError<Self, Error> {
+    public func assertBridgeBufferDoesNotOverflowIfPossible(
+        onBufferOverflow: @escaping () -> Error = { preconditionFailure("Bridge buffer overflowed.") }
+    ) -> Publishers.MapError<Self, Error> {
+
         return mapError { error -> Error in
             guard let bridgeFailure = error as? BridgeFailure else { return error }
 
