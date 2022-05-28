@@ -22,7 +22,7 @@ final class Publisher_AsObservableTests: XCTestCase {
     }
 
     /// Tests that we can convert observables being emitted from a Combine `PassthroughSubject`
-    /// into an RxSwift `Observable` and that emitted elements are propogated correctly.
+    /// into an RxSwift `Observable` and that emitted elements are propagated correctly.
     func testPassthroughSubjectSendEventsAreBridged() {
 
         let disposeBag = DisposeBag()
@@ -47,10 +47,12 @@ final class Publisher_AsObservableTests: XCTestCase {
 
         // Specify our expected events that will have been recorded by our test scheduler at a given test time and
         // with the expected received element
-        let expectedEvents = [Recorded.next(200, 0),
-                              Recorded.next(300, 1),
-                              Recorded.next(400, 2),
-                              Recorded.next(500, 3)]
+        let expectedEvents = [
+            Recorded.next(200, 0),
+            Recorded.next(300, 1),
+            Recorded.next(400, 2),
+            Recorded.next(500, 3)
+        ]
 
         // Run the test scheduler and assert that the recorded events are the same as what we were expecting
         scheduler.start()
@@ -58,7 +60,7 @@ final class Publisher_AsObservableTests: XCTestCase {
         XCTAssertEqual(output.events, expectedEvents)
     }
 
-    /// Tests that publishers like `Just<Int>` with single elements are propogated into the RxSwift world.
+    /// Tests that publishers like `Just<Int>` with single elements are propagated into the RxSwift world.
     func testPublisherSendEventsAreBridged() {
 
         let disposeBag = DisposeBag()
@@ -80,7 +82,7 @@ final class Publisher_AsObservableTests: XCTestCase {
         XCTAssertEqual(output.events, expectedEvents)
     }
 
-    /// Tests that publishers like `Just<[Int]>` with a sequence of elements are propogated into the RxSwift world.
+    /// Tests that publishers like `Just<[Int]>` with a sequence of elements are propagated into the RxSwift world.
     func testSequencePublisherEventsAreBridged() {
 
         let disposeBag = DisposeBag()
@@ -102,8 +104,8 @@ final class Publisher_AsObservableTests: XCTestCase {
         XCTAssertEqual(output.events, expectedEvents)
     }
 
-    /// Tests that when a Combine publisher emits a completion, this is propogated into the RxSwift world.
-    func testCompleteEventsArePropogatedDownstream() {
+    /// Tests that when a Combine publisher emits a completion, this is propagated into the RxSwift world.
+    func testCompleteEventsArePropagatedDownstream() {
 
         let disposeBag = DisposeBag()
         let output = scheduler.createObserver(Int.self)
@@ -119,16 +121,15 @@ final class Publisher_AsObservableTests: XCTestCase {
         scheduler.scheduleAt(200) { subject.send(0) }
         scheduler.scheduleAt(300) { subject.send(completion: .finished) }
 
-        let expectedEvents = [Recorded.next(200, 0),
-                              Recorded.completed(300)]
+        let expectedEvents = [Recorded.next(200, 0), Recorded.completed(300)]
 
         scheduler.start()
 
         XCTAssertEqual(output.events, expectedEvents)
     }
 
-    /// Tests that when a Combine publisher emits an error, this is propogated into the RxSwift world.
-    func testErrorsArePropogatedDownstream() {
+    /// Tests that when a Combine publisher emits an error, this is propagated into the RxSwift world.
+    func testErrorsArePropagatedDownstream() {
 
         let disposeBag = DisposeBag()
         let output = scheduler.createObserver(Int.self)
@@ -146,8 +147,7 @@ final class Publisher_AsObservableTests: XCTestCase {
         scheduler.scheduleAt(200) { subject.send(0) }
         scheduler.scheduleAt(300) { subject.send(completion: .failure(error)) }
 
-        let expectedEvents = [Recorded.next(200, 0),
-                              Recorded.error(300, error)]
+        let expectedEvents = [Recorded.next(200, 0), Recorded.error(300, error)]
 
         scheduler.start()
 
