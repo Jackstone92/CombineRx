@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "CombineRx",
-        "repositoryURL": "git@github.com:Jackstone92/CombineRx.git",
+        "repositoryURL": "https://github.com/Jackstone92/CombineRx.git",
         "state": {
           "branch": null,
           "revision": "a92daaa4bad7b0437897e4ecc79fb3149cf50cca",
@@ -12,7 +12,7 @@
       },
       {
         "package": "RxSwift",
-        "repositoryURL": "git@github.com:ReactiveX/RxSwift.git",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
         "state": {
           "branch": null,
           "revision": "cec68169a048a079f461ba203fe85636548d7a89",

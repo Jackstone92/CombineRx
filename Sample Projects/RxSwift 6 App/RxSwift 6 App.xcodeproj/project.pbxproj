@@ -392,7 +392,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		ECCD2D26283CFEB700663179 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:ReactiveX/RxSwift.git";
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.0.0;
