@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let viewModel = ViewModel(
-            client: .live(session: .shared),
+            client: .live(session: .shared), // change to `.succeeding`, `.failing` or `.delayed` for stubbed responses
             mainScheduler: MainScheduler.asyncInstance
         )
 
