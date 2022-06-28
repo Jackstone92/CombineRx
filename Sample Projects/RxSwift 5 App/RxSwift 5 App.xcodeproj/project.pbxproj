@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8C23241286A35F500786086 /* CombineRx in Frameworks */ = {isa = PBXBuildFile; productRef = E8C23240286A35F500786086 /* CombineRx */; };
+		E8C23249286A386200786086 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E8C23248286A386200786086 /* RxCocoa */; };
+		E8C2324B286A386200786086 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E8C2324A286A386200786086 /* RxSwift */; };
 		ECCD2CD6283CDB8100663179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CD5283CDB8100663179 /* AppDelegate.swift */; };
 		ECCD2CD8283CDB8100663179 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CD7283CDB8100663179 /* SceneDelegate.swift */; };
 		ECCD2CDA283CDB8100663179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CD9283CDB8100663179 /* ViewController.swift */; };
@@ -15,9 +18,6 @@
 		ECCD2D0F283CDF8800663179 /* MathsExpressionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D0E283CDF8800663179 /* MathsExpressionClient.swift */; };
 		ECCD2D16283CDFDF00663179 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D15283CDFDF00663179 /* Expression.swift */; };
 		ECCD2D18283CE13000663179 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D17283CE13000663179 /* ViewModel.swift */; };
-		ECCD2D34283D46D700663179 /* CombineRx in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D33283D46D700663179 /* CombineRx */; };
-		ECCD2D36283D46F100663179 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D35283D46F100663179 /* RxSwift */; };
-		ECCD2D38283D46F400663179 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D37283D46F400663179 /* RxCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,9 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECCD2D38283D46F400663179 /* RxCocoa in Frameworks */,
-				ECCD2D36283D46F100663179 /* RxSwift in Frameworks */,
-				ECCD2D34283D46D700663179 /* CombineRx in Frameworks */,
+				E8C2324B286A386200786086 /* RxSwift in Frameworks */,
+				E8C23249286A386200786086 /* RxCocoa in Frameworks */,
+				E8C23241286A35F500786086 /* CombineRx in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,9 +104,9 @@
 			);
 			name = "RxSwift 5 App";
 			packageProductDependencies = (
-				ECCD2D33283D46D700663179 /* CombineRx */,
-				ECCD2D35283D46F100663179 /* RxSwift */,
-				ECCD2D37283D46F400663179 /* RxCocoa */,
+				E8C23240286A35F500786086 /* CombineRx */,
+				E8C23248286A386200786086 /* RxCocoa */,
+				E8C2324A286A386200786086 /* RxSwift */,
 			);
 			productName = "RxSwift 5 App";
 			productReference = ECCD2CD2283CDB8100663179 /* RxSwift 5 App.app */;
@@ -137,8 +137,8 @@
 			);
 			mainGroup = ECCD2CC9283CDB8100663179;
 			packageReferences = (
-				ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				ECCD2D30283D46B100663179 /* XCRemoteSwiftPackageReference "CombineRx" */,
+				E8C2323F286A35F500786086 /* XCRemoteSwiftPackageReference "CombineRx" */,
+				E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = ECCD2CD3283CDB8100663179 /* Products */;
 			projectDirPath = "";
@@ -317,6 +317,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,6 +345,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,39 +383,39 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		E8C2323F286A35F500786086 /* XCRemoteSwiftPackageReference "CombineRx" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		ECCD2D30283D46B100663179 /* XCRemoteSwiftPackageReference "CombineRx" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:Jackstone92/CombineRx.git";
+			repositoryURL = "https://github.com/Jackstone92/CombineRx.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
 			};
 		};
+		E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		ECCD2D33283D46D700663179 /* CombineRx */ = {
+		E8C23240286A35F500786086 /* CombineRx */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ECCD2D30283D46B100663179 /* XCRemoteSwiftPackageReference "CombineRx" */;
+			package = E8C2323F286A35F500786086 /* XCRemoteSwiftPackageReference "CombineRx" */;
 			productName = CombineRx;
 		};
-		ECCD2D35283D46F100663179 /* RxSwift */ = {
+		E8C23248286A386200786086 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		ECCD2D37283D46F400663179 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ECCD2D10283CDFB100663179 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
+		};
+		E8C2324A286A386200786086 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
