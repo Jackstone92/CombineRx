@@ -18,3 +18,15 @@ jobs:
         run: |
           cd Sample\ Projects/RxSwift\ 5\ App/
           xcodebuild clean -project RxSwift\ 5\ App.xcodeproj -scheme RxSwift\ 5\ App -destination "generic/platform=iOS"
+
+  buildLatestProject:
+    name: "Build Latest Project"
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: |
+          cd Sample\ Projects/RxSwift\ 6\ App/
+          xcodebuild clean -project RxSwift\ 6\ App.xcodeproj -scheme RxSwift\ 6\ App -destination "generic/platform=iOS"
