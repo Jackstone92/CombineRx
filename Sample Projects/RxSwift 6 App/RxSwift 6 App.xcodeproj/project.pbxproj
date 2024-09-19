@@ -7,80 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E8C23241286A35F500786086 /* CombineRx in Frameworks */ = {isa = PBXBuildFile; productRef = E8C23240286A35F500786086 /* CombineRx */; };
-		E8C23249286A386200786086 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E8C23248286A386200786086 /* RxCocoa */; };
-		E8C2324B286A386200786086 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E8C2324A286A386200786086 /* RxSwift */; };
-		ECCD2CD6283CDB8100663179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CD5283CDB8100663179 /* AppDelegate.swift */; };
-		ECCD2CD8283CDB8100663179 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CD7283CDB8100663179 /* SceneDelegate.swift */; };
-		ECCD2CDA283CDB8100663179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CD9283CDB8100663179 /* ViewController.swift */; };
-		ECCD2CDF283CDB8400663179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2CDE283CDB8400663179 /* Assets.xcassets */; };
-		ECCD2CE2283CDB8400663179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2CE0283CDB8400663179 /* LaunchScreen.storyboard */; };
-		ECCD2D0F283CDF8800663179 /* MathsExpressionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D0E283CDF8800663179 /* MathsExpressionClient.swift */; };
-		ECCD2D16283CDFDF00663179 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D15283CDFDF00663179 /* Expression.swift */; };
-		ECCD2D18283CE13000663179 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D17283CE13000663179 /* ViewModel.swift */; };
+		ECCD2CF6283CDBA500663179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CF5283CDBA500663179 /* AppDelegate.swift */; };
+		ECCD2CF8283CDBA500663179 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CF7283CDBA500663179 /* SceneDelegate.swift */; };
+		ECCD2CFA283CDBA500663179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CF9283CDBA500663179 /* ViewController.swift */; };
+		ECCD2CFF283CDBA700663179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2CFE283CDBA700663179 /* Assets.xcassets */; };
+		ECCD2D02283CDBA700663179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2D00283CDBA700663179 /* LaunchScreen.storyboard */; };
+		ECCD2D1C283CF21500663179 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D1B283CF21500663179 /* Expression.swift */; };
+		ECCD2D1E283CF22200663179 /* MathsExpressionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D1D283CF22200663179 /* MathsExpressionClient.swift */; };
+		ECCD2D20283CF22B00663179 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D1F283CF22B00663179 /* ViewModel.swift */; };
+		ECCD2D28283CFEB700663179 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D27283CFEB700663179 /* RxCocoa */; };
+		ECCD2D2A283CFEB700663179 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D29283CFEB700663179 /* RxSwift */; };
+		ECCD2D2D283D036900663179 /* CombineRx in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D2C283D036900663179 /* CombineRx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ECCD2CD2283CDB8100663179 /* RxSwift 5 App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift 5 App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECCD2CD5283CDB8100663179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ECCD2CD7283CDB8100663179 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ECCD2CD9283CDB8100663179 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		ECCD2CDE283CDB8400663179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ECCD2CE1283CDB8400663179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		ECCD2CE3283CDB8400663179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECCD2D0E283CDF8800663179 /* MathsExpressionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathsExpressionClient.swift; sourceTree = "<group>"; };
-		ECCD2D15283CDFDF00663179 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
-		ECCD2D17283CE13000663179 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		ECCD2CF2283CDBA500663179 /* RxSwift 6 App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift 6 App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECCD2CF5283CDBA500663179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ECCD2CF7283CDBA500663179 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ECCD2CF9283CDBA500663179 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ECCD2CFE283CDBA700663179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ECCD2D01283CDBA700663179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ECCD2D03283CDBA700663179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECCD2D1B283CF21500663179 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		ECCD2D1D283CF22200663179 /* MathsExpressionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathsExpressionClient.swift; sourceTree = "<group>"; };
+		ECCD2D1F283CF22B00663179 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		ECCD2D22283CF3D500663179 /* CombineRx */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CombineRx; path = ../..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		ECCD2CCF283CDB8100663179 /* Frameworks */ = {
+		ECCD2CEF283CDBA500663179 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8C2324B286A386200786086 /* RxSwift in Frameworks */,
-				E8C23249286A386200786086 /* RxCocoa in Frameworks */,
-				E8C23241286A35F500786086 /* CombineRx in Frameworks */,
+				ECCD2D2A283CFEB700663179 /* RxSwift in Frameworks */,
+				ECCD2D2D283D036900663179 /* CombineRx in Frameworks */,
+				ECCD2D28283CFEB700663179 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ECCD2CC9283CDB8100663179 = {
+		ECCD2CE9283CDBA500663179 = {
 			isa = PBXGroup;
 			children = (
-				ECCD2CD4283CDB8100663179 /* RxSwift 5 App */,
-				ECCD2CD3283CDB8100663179 /* Products */,
-				ECCD2D23283CF4AF00663179 /* Frameworks */,
+				ECCD2D21283CF3D500663179 /* Packages */,
+				ECCD2CF4283CDBA500663179 /* RxSwift 6 App */,
+				ECCD2CF3283CDBA500663179 /* Products */,
+				ECCD2D2B283D036900663179 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		ECCD2CD3283CDB8100663179 /* Products */ = {
+		ECCD2CF3283CDBA500663179 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ECCD2CD2283CDB8100663179 /* RxSwift 5 App.app */,
+				ECCD2CF2283CDBA500663179 /* RxSwift 6 App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ECCD2CD4283CDB8100663179 /* RxSwift 5 App */ = {
+		ECCD2CF4283CDBA500663179 /* RxSwift 6 App */ = {
 			isa = PBXGroup;
 			children = (
-				ECCD2CD5283CDB8100663179 /* AppDelegate.swift */,
-				ECCD2CD7283CDB8100663179 /* SceneDelegate.swift */,
-				ECCD2D15283CDFDF00663179 /* Expression.swift */,
-				ECCD2D0E283CDF8800663179 /* MathsExpressionClient.swift */,
-				ECCD2D17283CE13000663179 /* ViewModel.swift */,
-				ECCD2CD9283CDB8100663179 /* ViewController.swift */,
-				ECCD2CDE283CDB8400663179 /* Assets.xcassets */,
-				ECCD2CE0283CDB8400663179 /* LaunchScreen.storyboard */,
-				ECCD2CE3283CDB8400663179 /* Info.plist */,
+				ECCD2CF5283CDBA500663179 /* AppDelegate.swift */,
+				ECCD2CF7283CDBA500663179 /* SceneDelegate.swift */,
+				ECCD2D1B283CF21500663179 /* Expression.swift */,
+				ECCD2D1D283CF22200663179 /* MathsExpressionClient.swift */,
+				ECCD2D1F283CF22B00663179 /* ViewModel.swift */,
+				ECCD2CF9283CDBA500663179 /* ViewController.swift */,
+				ECCD2CFE283CDBA700663179 /* Assets.xcassets */,
+				ECCD2D00283CDBA700663179 /* LaunchScreen.storyboard */,
+				ECCD2D03283CDBA700663179 /* Info.plist */,
 			);
-			path = "RxSwift 5 App";
+			path = "RxSwift 6 App";
 			sourceTree = "<group>";
 		};
-		ECCD2D23283CF4AF00663179 /* Frameworks */ = {
+		ECCD2D21283CF3D500663179 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				ECCD2D22283CF3D500663179 /* CombineRx */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		ECCD2D2B283D036900663179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -90,44 +100,44 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ECCD2CD1283CDB8100663179 /* RxSwift 5 App */ = {
+		ECCD2CF1283CDBA500663179 /* RxSwift 6 App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECCD2CE6283CDB8400663179 /* Build configuration list for PBXNativeTarget "RxSwift 5 App" */;
+			buildConfigurationList = ECCD2D06283CDBA700663179 /* Build configuration list for PBXNativeTarget "RxSwift 6 App" */;
 			buildPhases = (
-				ECCD2CCE283CDB8100663179 /* Sources */,
-				ECCD2CCF283CDB8100663179 /* Frameworks */,
-				ECCD2CD0283CDB8100663179 /* Resources */,
+				ECCD2CEE283CDBA500663179 /* Sources */,
+				ECCD2CEF283CDBA500663179 /* Frameworks */,
+				ECCD2CF0283CDBA500663179 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "RxSwift 5 App";
+			name = "RxSwift 6 App";
 			packageProductDependencies = (
-				E8C23240286A35F500786086 /* CombineRx */,
-				E8C23248286A386200786086 /* RxCocoa */,
-				E8C2324A286A386200786086 /* RxSwift */,
+				ECCD2D27283CFEB700663179 /* RxCocoa */,
+				ECCD2D29283CFEB700663179 /* RxSwift */,
+				ECCD2D2C283D036900663179 /* CombineRx */,
 			);
-			productName = "RxSwift 5 App";
-			productReference = ECCD2CD2283CDB8100663179 /* RxSwift 5 App.app */;
+			productName = "RxSwift 6 App";
+			productReference = ECCD2CF2283CDBA500663179 /* RxSwift 6 App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		ECCD2CCA283CDB8100663179 /* Project object */ = {
+		ECCD2CEA283CDBA500663179 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					ECCD2CD1283CDB8100663179 = {
+					ECCD2CF1283CDBA500663179 = {
 						CreatedOnToolsVersion = 13.4;
 					};
 				};
 			};
-			buildConfigurationList = ECCD2CCD283CDB8100663179 /* Build configuration list for PBXProject "RxSwift 5 App" */;
+			buildConfigurationList = ECCD2CED283CDBA500663179 /* Build configuration list for PBXProject "RxSwift 6 App" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,53 +145,52 @@
 				en,
 				Base,
 			);
-			mainGroup = ECCD2CC9283CDB8100663179;
+			mainGroup = ECCD2CE9283CDBA500663179;
 			packageReferences = (
-				E8C2323F286A35F500786086 /* XCRemoteSwiftPackageReference "CombineRx" */,
-				E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				ECCD2D26283CFEB700663179 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
-			productRefGroup = ECCD2CD3283CDB8100663179 /* Products */;
+			productRefGroup = ECCD2CF3283CDBA500663179 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECCD2CD1283CDB8100663179 /* RxSwift 5 App */,
+				ECCD2CF1283CDBA500663179 /* RxSwift 6 App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		ECCD2CD0283CDB8100663179 /* Resources */ = {
+		ECCD2CF0283CDBA500663179 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECCD2CE2283CDB8400663179 /* LaunchScreen.storyboard in Resources */,
-				ECCD2CDF283CDB8400663179 /* Assets.xcassets in Resources */,
+				ECCD2D02283CDBA700663179 /* LaunchScreen.storyboard in Resources */,
+				ECCD2CFF283CDBA700663179 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		ECCD2CCE283CDB8100663179 /* Sources */ = {
+		ECCD2CEE283CDBA500663179 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECCD2CDA283CDB8100663179 /* ViewController.swift in Sources */,
-				ECCD2CD6283CDB8100663179 /* AppDelegate.swift in Sources */,
-				ECCD2D0F283CDF8800663179 /* MathsExpressionClient.swift in Sources */,
-				ECCD2CD8283CDB8100663179 /* SceneDelegate.swift in Sources */,
-				ECCD2D18283CE13000663179 /* ViewModel.swift in Sources */,
-				ECCD2D16283CDFDF00663179 /* Expression.swift in Sources */,
+				ECCD2CFA283CDBA500663179 /* ViewController.swift in Sources */,
+				ECCD2CF6283CDBA500663179 /* AppDelegate.swift in Sources */,
+				ECCD2D1E283CF22200663179 /* MathsExpressionClient.swift in Sources */,
+				ECCD2CF8283CDBA500663179 /* SceneDelegate.swift in Sources */,
+				ECCD2D20283CF22B00663179 /* ViewModel.swift in Sources */,
+				ECCD2D1C283CF21500663179 /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ECCD2CE0283CDB8400663179 /* LaunchScreen.storyboard */ = {
+		ECCD2D00283CDBA700663179 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ECCD2CE1283CDB8400663179 /* Base */,
+				ECCD2D01283CDBA700663179 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -189,7 +198,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		ECCD2CE4283CDB8400663179 /* Debug */ = {
+		ECCD2D04283CDBA700663179 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -249,7 +258,7 @@
 			};
 			name = Debug;
 		};
-		ECCD2CE5283CDB8400663179 /* Release */ = {
+		ECCD2D05283CDBA700663179 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -303,16 +312,15 @@
 			};
 			name = Release;
 		};
-		ECCD2CE7283CDB8400663179 /* Debug */ = {
+		ECCD2D07283CDBA700663179 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3SRBFZ7254;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "RxSwift 5 App/Info.plist";
+				INFOPLIST_FILE = "RxSwift 6 App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -323,7 +331,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jackstone.RxSwift-5-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackstone.RxSwift-6-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -331,16 +339,15 @@
 			};
 			name = Debug;
 		};
-		ECCD2CE8283CDB8400663179 /* Release */ = {
+		ECCD2D08283CDBA700663179 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3SRBFZ7254;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "RxSwift 5 App/Info.plist";
+				INFOPLIST_FILE = "RxSwift 6 App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -351,7 +358,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jackstone.RxSwift-5-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jackstone.RxSwift-6-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -362,20 +369,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ECCD2CCD283CDB8100663179 /* Build configuration list for PBXProject "RxSwift 5 App" */ = {
+		ECCD2CED283CDBA500663179 /* Build configuration list for PBXProject "RxSwift 6 App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ECCD2CE4283CDB8400663179 /* Debug */,
-				ECCD2CE5283CDB8400663179 /* Release */,
+				ECCD2D04283CDBA700663179 /* Debug */,
+				ECCD2D05283CDBA700663179 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECCD2CE6283CDB8400663179 /* Build configuration list for PBXNativeTarget "RxSwift 5 App" */ = {
+		ECCD2D06283CDBA700663179 /* Build configuration list for PBXNativeTarget "RxSwift 6 App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ECCD2CE7283CDB8400663179 /* Debug */,
-				ECCD2CE8283CDB8400663179 /* Release */,
+				ECCD2D07283CDBA700663179 /* Debug */,
+				ECCD2D08283CDBA700663179 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -383,41 +390,32 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E8C2323F286A35F500786086 /* XCRemoteSwiftPackageReference "CombineRx" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Jackstone92/CombineRx.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		ECCD2D26283CFEB700663179 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 6.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E8C23240286A35F500786086 /* CombineRx */ = {
+		ECCD2D27283CFEB700663179 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E8C2323F286A35F500786086 /* XCRemoteSwiftPackageReference "CombineRx" */;
-			productName = CombineRx;
-		};
-		E8C23248286A386200786086 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = ECCD2D26283CFEB700663179 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		E8C2324A286A386200786086 /* RxSwift */ = {
+		ECCD2D29283CFEB700663179 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E8C23247286A386200786086 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = ECCD2D26283CFEB700663179 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		ECCD2D2C283D036900663179 /* CombineRx */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CombineRx;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = ECCD2CCA283CDB8100663179 /* Project object */;
+	rootObject = ECCD2CEA283CDBA500663179 /* Project object */;
 }

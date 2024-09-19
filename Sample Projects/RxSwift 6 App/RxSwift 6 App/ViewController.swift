@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  RxSwift 5 App
+//  RxSwift 6 App
 //
 //  Created by Jack Stone on 24/05/2022.
 //
@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import CombineRx
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     private let viewModel: ViewModel
     private let disposeBag = DisposeBag()
@@ -26,7 +26,6 @@ class ViewController: UIViewController {
 
     private lazy var expressionAndAnswerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +56,7 @@ class ViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -112,33 +111,28 @@ class ViewController: UIViewController {
     }
 
     private func setupBindings() {
-        Observable.just(viewModel.title)
-            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .catchToEmpty()
+        Infallible.just(viewModel.title)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] title in self.title = title }
             .store(in: &subscriptions)
 
-        Observable.just(viewModel.buttonLabel)
-            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .catchToEmpty()
+        Infallible.just(viewModel.buttonLabel)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] title in self.button.setTitle(title, for: .normal) }
             .store(in: &subscriptions)
 
-        Observable.just(viewModel.errorMessage)
-            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .catchToEmpty()
+        Infallible.just(viewModel.errorMessage)
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] errorMessage in self.errorLabel.text = errorMessage }
             .store(in: &subscriptions)
 
         viewModel.expressionAndAnswerObservable
-            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .catchToEmpty()
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] label in self.expressionAndAnswerLabel.text = label }
             .store(in: &subscriptions)
 
         viewModel.isLoadingObservable
-            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .catchToEmpty()
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] isLoading in
                 switch isLoading {
                 case true:  self.activityIndicator.startAnimating()
@@ -149,14 +143,12 @@ class ViewController: UIViewController {
 
         viewModel.isLoadingObservable
             .withLatestFrom(viewModel.isErrorObservable, resultSelector: { $0 || $1 })
-            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .catchToEmpty()
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] isLoadingOrError in self.expressionAndAnswerLabel.isHidden = isLoadingOrError }
             .store(in: &subscriptions)
 
         viewModel.isErrorObservable
-            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
-            .catchToEmpty()
+            .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] isError in self.errorLabel.isHidden = !isError }
             .store(in: &subscriptions)
     }
@@ -166,14 +158,5 @@ class ViewController: UIViewController {
             .asDriver()
             .drive(viewModel.buttonTapSubject)
             .disposed(by: disposeBag)
-    }
-}
-
-private extension Publisher {
-
-    func catchToEmpty() -> AnyPublisher<Output, Never> {
-        self
-            .catch { _ in Empty().eraseToAnyPublisher() }
-            .eraseToAnyPublisher()
     }
 }

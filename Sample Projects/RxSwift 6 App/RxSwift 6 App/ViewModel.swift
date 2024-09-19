@@ -1,6 +1,6 @@
 //
 //  ViewModel.swift
-//  RxSwift 5 App
+//  RxSwift 6 App
 //
 //  Created by Jack Stone on 24/05/2022.
 //
@@ -18,25 +18,28 @@ final class ViewModel {
         case error
     }
 
-    var expressionAndAnswerObservable: Observable<String> {
+    var expressionAndAnswerObservable: Infallible<String> {
         stateSubject
-            .skipWhile { $0 == .pending }
+            .skip { $0 == .pending }
             .map { state in
                 guard let expression = state.expression else { return "" }
                 return [expression.expression, "=", String(expression.answer)].joined(separator: " ")
             }
+            .asInfallible(onErrorJustReturn: "")
     }
 
-    var isErrorObservable: Observable<Bool> {
+    var isErrorObservable: Infallible<Bool> {
         stateSubject
-            .skipWhile { $0 == .pending }
+            .skip { $0 == .pending }
             .map { $0 == .error }
+            .asInfallible(onErrorJustReturn: false)
     }
 
-    var isLoadingObservable: Observable<Bool> {
+    var isLoadingObservable: Infallible<Bool> {
         stateSubject
-            .skipWhile { $0 == .pending }
+            .skip { $0 == .pending }
             .map { $0 == .loading }
+            .asInfallible(onErrorJustReturn: false)
     }
 
     var title: String { "Maths Expressions" }
@@ -75,7 +78,7 @@ final class ViewModel {
 
         client.randomExpression()
             .asObservable()
-            .observeOn(mainScheduler)
+            .observe(on: mainScheduler)
             .subscribe(
                 onNext: { [unowned self] expression in self.stateSubject.onNext(.loaded(expression)) },
                 onError: { [unowned self] _ in self.stateSubject.onNext(.error) }
