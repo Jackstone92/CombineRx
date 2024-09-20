@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let viewModel = ViewModel(
             client: .live(session: .shared), // change to `.succeeding`, `.failing` or `.delayed` for stubbed responses
+            randomNumberGenerator: { Int.random(in: 0 ... 100) },
             mainScheduler: MainScheduler.asyncInstance
         )
 
@@ -61,4 +61,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 }
-
