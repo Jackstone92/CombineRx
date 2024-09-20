@@ -84,7 +84,7 @@ import PackageDescription
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/Jackstone92/CombineRx", .upToNextMajor(from: "0.1.0")),
+        .package(url: "https://github.com/Jackstone92/CombineRx", .upToNextMajor(from: "2.0.0")),
     ],
     ...
     targets: [
