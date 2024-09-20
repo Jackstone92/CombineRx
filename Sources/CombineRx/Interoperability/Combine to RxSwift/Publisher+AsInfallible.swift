@@ -35,7 +35,7 @@ extension Publisher {
     ///
     /// If any error is encountered, the provided `element` is returned.
     ///
-    /// - Parameter onErrorJustReturn: The element to return in the event of an error.
+    /// - Parameter publisher: The element to return in the event of an error.
     ///
     /// - Returns: An RxSwift `Infallible` that is the bridged transformation of the given `Publisher`.
     ///
@@ -61,7 +61,7 @@ extension Publisher {
     ///
     /// If any error is encountered, the provided `publisher` is used to fall back.
     ///
-    /// - Parameter onErrorFallbackTo: A fallback publisher that is returned in the event of an error.
+    /// - Parameter publisher: A fallback publisher that is returned in the event of an error.
     ///
     /// - Returns: An RxSwift `Infallible` that is the bridged transformation of the given `Publisher`.
     ///
