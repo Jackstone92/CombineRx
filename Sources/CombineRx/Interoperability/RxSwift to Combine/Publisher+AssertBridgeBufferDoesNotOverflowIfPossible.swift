@@ -7,7 +7,6 @@ import Foundation
 import Combine
 
 extension Publisher {
-
     /// Convenience method whose default implementation causes a `preconditionFailure` when an upstream `BridgePublisher`'s buffer overflows.
     /// In the event this does not occur, the failure type is mapped to the `Error` type of the upstream `Observable`.
     ///
@@ -18,13 +17,12 @@ extension Publisher {
     public func assertBridgeBufferDoesNotOverflowIfPossible(
         onBufferOverflow: @escaping () -> Error = { preconditionFailure("Bridge buffer overflowed.") }
     ) -> Publishers.MapError<Self, Error> {
-
         return mapError { error -> Error in
             guard let bridgeFailure = error as? BridgeFailure else { return error }
 
             switch bridgeFailure {
-            case .bufferOverflow:                   return onBufferOverflow()
-            case .upstreamError(let upstreamError): return upstreamError
+            case .bufferOverflow: return onBufferOverflow()
+            case let .upstreamError(upstreamError): return upstreamError
             }
         }
     }

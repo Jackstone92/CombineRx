@@ -7,7 +7,6 @@ import Combine
 import RxSwift
 
 extension ObservableType {
-
     /// A bridging function that transforms an RxSwift `ObservableType` into a Combine `Publisher`.
     ///
     /// There is a fundamental difference between Combine and RxSwift around the concept of back pressure and how it is handled.
@@ -29,13 +28,12 @@ extension ObservableType {
         withBufferSize size: Int,
         andBridgeBufferingStrategy whenFull: BridgeBufferingStrategy
     ) -> Publishers.MapError<Publishers.Buffer<ObservableTypeBridgePublisher<Self>>, Error> {
-
         return ObservableTypeBridgePublisher(upstream: self)
             .buffer(size: size, prefetch: .byRequest, whenFull: whenFull.strategy)
             .mapError { error -> Error in
                 switch error {
-                case BridgeFailure.upstreamError(let upstreamError):    return upstreamError
-                default:                                                return error
+                case let BridgeFailure.upstreamError(upstreamError): return upstreamError
+                default: return error
                 }
             }
     }

@@ -7,7 +7,6 @@ import Combine
 import RxSwift
 
 extension Publisher where Failure == Never {
-
     /// A bridging function that transforms a Combine `Publisher` into an RxSwift `Infallible`.
     ///
     /// This is a direct transformation when the `Failure` type is already `Never`.
@@ -16,7 +15,6 @@ extension Publisher where Failure == Never {
     ///
     public func asInfallible() -> Infallible<Output> {
         return .create { observer -> Disposable in
-
             let cancellable = sink(
                 receiveCompletion: { _ in observer(.completed) },
                 receiveValue: { observer(.next($0)) }
@@ -30,7 +28,6 @@ extension Publisher where Failure == Never {
 }
 
 extension Publisher {
-
     /// A bridging function that transforms a Combine `Publisher` into an RxSwift `Infallible`.
     ///
     /// If any error is encountered, the provided `element` is returned.

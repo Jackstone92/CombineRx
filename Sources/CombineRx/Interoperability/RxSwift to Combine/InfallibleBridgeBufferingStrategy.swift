@@ -11,11 +11,10 @@ public enum InfallibleBridgeBufferingStrategy {
 }
 
 extension InfallibleBridgeBufferingStrategy {
-
     var strategy: Publishers.BufferingStrategy<Never> {
         switch self {
-        case .dropNewest:   return .dropNewest
-        case .dropOldest:   return .dropOldest
+        case .dropNewest: return .dropNewest
+        case .dropOldest: return .dropOldest
         }
     }
 }

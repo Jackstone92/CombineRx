@@ -8,7 +8,6 @@ import RxSwift
 
 /// A `Publisher` that handles subscriptions from an upstream `ObservableType`.
 public struct ObservableTypeBridgePublisher<U: ObservableType>: Publisher  {
-
     public typealias Output = U.Element
     public typealias Failure = BridgeFailure
 

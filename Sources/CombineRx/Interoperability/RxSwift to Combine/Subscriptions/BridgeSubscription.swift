@@ -7,7 +7,6 @@ import Combine
 import RxSwift
 
 final class BridgeSubscription<Upstream, Downstream: Subscriber>: Subscription {
-
     enum Status {
         case active(disposeBag: DisposeBag)
         case pending
