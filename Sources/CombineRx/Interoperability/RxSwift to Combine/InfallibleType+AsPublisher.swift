@@ -7,7 +7,6 @@ import Combine
 import RxSwift
 
 extension InfallibleType {
-
     /// A bridging function that transforms an RxSwift `InfallibleType` into a Combine `Publisher`.
     ///
     /// There is a fundamental difference between Combine and RxSwift around the concept of back pressure and how it is handled.
@@ -26,7 +25,6 @@ extension InfallibleType {
         withBufferSize size: Int,
         andBridgeBufferingStrategy whenFull: InfallibleBridgeBufferingStrategy
     ) -> Publishers.Buffer<InfallibleTypeBridgePublisher<Self>> {
-
         return InfallibleTypeBridgePublisher(upstream: self)
             .buffer(size: size, prefetch: .byRequest, whenFull: whenFull.strategy)
     }

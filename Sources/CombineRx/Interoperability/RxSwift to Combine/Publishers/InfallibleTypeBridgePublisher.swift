@@ -8,7 +8,6 @@ import RxSwift
 
 /// A `Publisher` that handles subscriptions from an upstream `InfallibleType`.
 public struct InfallibleTypeBridgePublisher<U: InfallibleType>: Publisher {
-
     public typealias Output = U.Element
     public typealias Failure = Never
 
