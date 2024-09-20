@@ -12,7 +12,6 @@ import RxCocoa
 import CombineRx
 
 final class ViewController: UIViewController {
-
     private let viewModel: ViewModel
     private let disposeBag = DisposeBag()
     private var subscriptions = Set<AnyCancellable>()
@@ -24,10 +23,11 @@ final class ViewController: UIViewController {
         return indicator
     }()
 
-    private lazy var expressionAndAnswerLabel: UILabel = {
+    private lazy var factLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,18 +67,20 @@ final class ViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .white
 
-        setupExpressionAndAnswerLabel()
+        setupFactLabel()
         setupErrorLabel()
         setupButton()
         setupActivityIndicator()
     }
 
-    private func setupExpressionAndAnswerLabel() {
-        view.addSubview(expressionAndAnswerLabel)
+    private func setupFactLabel() {
+        view.addSubview(factLabel)
 
         NSLayoutConstraint.activate([
-            expressionAndAnswerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            expressionAndAnswerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            factLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            factLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            factLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            factLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
 
@@ -126,12 +128,12 @@ final class ViewController: UIViewController {
             .sink { [unowned self] errorMessage in self.errorLabel.text = errorMessage }
             .store(in: &subscriptions)
 
-        viewModel.expressionAndAnswerObservable
+        viewModel.factInfallible
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
-            .sink { [unowned self] label in self.expressionAndAnswerLabel.text = label }
+            .sink { [unowned self] label in self.factLabel.text = label }
             .store(in: &subscriptions)
 
-        viewModel.isLoadingObservable
+        viewModel.isLoadingInfallible
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] isLoading in
                 switch isLoading {
@@ -141,13 +143,13 @@ final class ViewController: UIViewController {
             }
             .store(in: &subscriptions)
 
-        viewModel.isLoadingObservable
-            .withLatestFrom(viewModel.isErrorObservable, resultSelector: { $0 || $1 })
+        viewModel.isLoadingInfallible
+            .withLatestFrom(viewModel.isErrorInfallible, resultSelector: { $0 || $1 })
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
-            .sink { [unowned self] isLoadingOrError in self.expressionAndAnswerLabel.isHidden = isLoadingOrError }
+            .sink { [unowned self] isLoadingOrError in self.factLabel.isHidden = isLoadingOrError }
             .store(in: &subscriptions)
 
-        viewModel.isErrorObservable
+        viewModel.isErrorInfallible
             .asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropNewest)
             .sink { [unowned self] isError in self.errorLabel.isHidden = !isError }
             .store(in: &subscriptions)
