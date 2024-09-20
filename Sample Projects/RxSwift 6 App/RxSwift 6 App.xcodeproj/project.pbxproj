@@ -13,8 +13,6 @@
 		ECCD2CFA283CDBA500663179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CF9283CDBA500663179 /* ViewController.swift */; };
 		ECCD2CFF283CDBA700663179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2CFE283CDBA700663179 /* Assets.xcassets */; };
 		ECCD2D02283CDBA700663179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECCD2D00283CDBA700663179 /* LaunchScreen.storyboard */; };
-		ECCD2D1C283CF21500663179 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D1B283CF21500663179 /* Expression.swift */; };
-		ECCD2D1E283CF22200663179 /* MathsExpressionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D1D283CF22200663179 /* MathsExpressionClient.swift */; };
 		ECCD2D20283CF22B00663179 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2D1F283CF22B00663179 /* ViewModel.swift */; };
 		ECCD2D28283CFEB700663179 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D27283CFEB700663179 /* RxCocoa */; };
 		ECCD2D2A283CFEB700663179 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECCD2D29283CFEB700663179 /* RxSwift */; };
@@ -30,8 +28,6 @@
 		ECCD2CFE283CDBA700663179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECCD2D01283CDBA700663179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECCD2D03283CDBA700663179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECCD2D1B283CF21500663179 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
-		ECCD2D1D283CF22200663179 /* MathsExpressionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathsExpressionClient.swift; sourceTree = "<group>"; };
 		ECCD2D1F283CF22B00663179 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		ECCD2D22283CF3D500663179 /* CombineRx */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CombineRx; path = ../..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,14 +69,12 @@
 			children = (
 				ECCD2CF5283CDBA500663179 /* AppDelegate.swift */,
 				ECCD2CF7283CDBA500663179 /* SceneDelegate.swift */,
-				ECCD2D1B283CF21500663179 /* Expression.swift */,
-				ECCD2D1D283CF22200663179 /* MathsExpressionClient.swift */,
+				E8BCCD962C9D533F00D49058 /* NumberFactClient.swift */,
 				ECCD2D1F283CF22B00663179 /* ViewModel.swift */,
 				ECCD2CF9283CDBA500663179 /* ViewController.swift */,
 				ECCD2CFE283CDBA700663179 /* Assets.xcassets */,
 				ECCD2D00283CDBA700663179 /* LaunchScreen.storyboard */,
 				ECCD2D03283CDBA700663179 /* Info.plist */,
-				E8BCCD962C9D533F00D49058 /* NumberFactClient.swift */,
 			);
 			path = "RxSwift 6 App";
 			sourceTree = "<group>";
@@ -180,10 +174,8 @@
 			files = (
 				ECCD2CFA283CDBA500663179 /* ViewController.swift in Sources */,
 				ECCD2CF6283CDBA500663179 /* AppDelegate.swift in Sources */,
-				ECCD2D1E283CF22200663179 /* MathsExpressionClient.swift in Sources */,
 				ECCD2CF8283CDBA500663179 /* SceneDelegate.swift in Sources */,
 				ECCD2D20283CF22B00663179 /* ViewModel.swift in Sources */,
-				ECCD2D1C283CF21500663179 /* Expression.swift in Sources */,
 				E8BCCD972C9D533F00D49058 /* NumberFactClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
