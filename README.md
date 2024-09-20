@@ -18,6 +18,30 @@ import CombineRx
 let myBridgedObservable = Just(0).asObservable()
 ```
 
+It is also possible to convert Combine `Publisher`s to RxSwift `Infallible`s using `.asInfallible()`.
+This can be done as follows:
+```swift
+import Combine
+import RxSwift
+import CombineRx
+
+let myBridgedInfallible = Just(0)
+    .setFailureType(to: Never.self)
+    .asInfallible() // Works when `Failure` type is `Never`.
+
+let myBridgedInfallible = Just(0)
+    .setFailureType(to: Error.self)
+    .asInfallible(onErrorRecover: { error in ... }) // Handle the error
+
+let myBridgedInfallible = Just(0)
+    .setFailureType(to: Error.self)
+    .asInfallible(onErrorFallbackTo: Just<Int>(42).eraseToAnyPublisher()) // Use a fallback `Publisher`
+
+let myBridgedInfallible = Just(0)
+    .setFailureType(to: Error.self)
+    .asInfallible(onErrorJustReturn: 42) // Use a fallback value
+```
+
 ### RxSwift to Combine
 In order to convert RxSwift `Observable`s to Combine `Publisher`s, you can make use of the
 `asPublisher(withBufferSize:andBridgeBufferingStrategy:)` function. This can be done as follows:
@@ -29,6 +53,19 @@ import CombineRx
 let myBridgedPublisher1 = Observable.just(0).asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .error)
 let myBridgedPublisher2 = Observable.from([0, 1, 2, 3]).asPublisher(withBufferSize: 4, andBridgeBufferingStrategy: .error)
 ```
+
+It is also possible to convert RxSwift `Infallible`s to Combine `Publisher`s 
+using `asPublisher(withBufferSize:andBridgeBufferingStrategy:)`.
+This can be done as follows:
+```swift
+import Combine
+import RxSwift
+import CombineRx
+
+let myBridgedPublisher1 = Infallible.just(0).asPublisher(withBufferSize: 1, andBridgeBufferingStrategy: .dropOldest)
+let myBridgedPublisher2 = Infallible.from([0, 1, 2, 3]).asPublisher(withBufferSize: 4, andBridgeBufferingStrategy: .dropOldest)
+```
+
 
 One difference between RxSwift and Combine is that Combine adheres to the mechanism of backpressure in order to ensure that `Publisher`s only produce as many elements that `Subscriber`s have requested. This prevents the case where elements might build up in a `Publisher`s buffer faster than they can be processed downstream by a subscriber as this could lead to out-of-memory errors and degradation in performance due to high system resource consumption. Combine applies this backpressure upstream through a contractual obligation by `Publisher`s to only emit an element when it is requested by `Subscriber`s through `Subscribers.Demand` requests.
 
@@ -47,7 +84,7 @@ import PackageDescription
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/Jackstone92/CombineRx", .upToNextMajor(from: "0.1.0")),
+        .package(url: "https://github.com/Jackstone92/CombineRx", .upToNextMajor(from: "2.0.0")),
     ],
     ...
     targets: [
