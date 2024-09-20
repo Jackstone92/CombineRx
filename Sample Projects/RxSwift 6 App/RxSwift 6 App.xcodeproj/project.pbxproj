@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8BCCD972C9D533F00D49058 /* NumberFactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BCCD962C9D533F00D49058 /* NumberFactClient.swift */; };
 		ECCD2CF6283CDBA500663179 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CF5283CDBA500663179 /* AppDelegate.swift */; };
 		ECCD2CF8283CDBA500663179 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CF7283CDBA500663179 /* SceneDelegate.swift */; };
 		ECCD2CFA283CDBA500663179 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD2CF9283CDBA500663179 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E8BCCD962C9D533F00D49058 /* NumberFactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFactClient.swift; sourceTree = "<group>"; };
 		ECCD2CF2283CDBA500663179 /* RxSwift 6 App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift 6 App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCD2CF5283CDBA500663179 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECCD2CF7283CDBA500663179 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				ECCD2CFE283CDBA700663179 /* Assets.xcassets */,
 				ECCD2D00283CDBA700663179 /* LaunchScreen.storyboard */,
 				ECCD2D03283CDBA700663179 /* Info.plist */,
+				E8BCCD962C9D533F00D49058 /* NumberFactClient.swift */,
 			);
 			path = "RxSwift 6 App";
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				ECCD2CF8283CDBA500663179 /* SceneDelegate.swift in Sources */,
 				ECCD2D20283CF22B00663179 /* ViewModel.swift in Sources */,
 				ECCD2D1C283CF21500663179 /* Expression.swift in Sources */,
+				E8BCCD972C9D533F00D49058 /* NumberFactClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
