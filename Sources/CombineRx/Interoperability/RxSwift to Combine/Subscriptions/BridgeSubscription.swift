@@ -6,7 +6,7 @@
 import Combine
 import RxSwift
 
-final class BridgeSubscription<U, D: Subscriber>: Subscription {
+final class BridgeSubscription<Upstream, Downstream: Subscriber>: Subscription {
 
     enum Status {
         case active(disposeBag: DisposeBag)
@@ -18,12 +18,12 @@ final class BridgeSubscription<U, D: Subscriber>: Subscription {
         let subscribe: (_ upstream: U, _ downstream: D) -> Disposable
     }
 
-    private let upstream: U
-    private let downstream: D
-    private let witness: Witness<U, D>
+    private let upstream: Upstream
+    private let downstream: Downstream
+    private let witness: Witness<Upstream, Downstream>
     private var status: Status = .pending
 
-    init(upstream: U, downstream: D, witness: Witness<U, D>) {
+    init(upstream: Upstream, downstream: Downstream, witness: Witness<Upstream, Downstream>) {
         self.upstream = upstream
         self.downstream = downstream
         self.witness = witness
